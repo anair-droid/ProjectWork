@@ -1,0 +1,26 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+{% block content %}
+
+   <div class="main">
+       <form method="POST" action="{% url 'manageApp' %}"  >
+           {% csrf_token %}
+           {% if user.is_authenticated %}
+                <!--<h2>Welcome {{ user.username }}!</h2>-->
+
+                      <label for="appname" >Application Name</label>
+                      <input type="text" class="form-control" name="appname"  required="True">
+                      <label for="appdesc">Description</label>
+                      <input type="text" class="form-control" name="appdesc" >
+                      <label for="applob">Line of Business</label>
+                      <input type="text" class="form-control" name="applob" required="True">
+                      <input id="submit" class="call-to-action-button_Change" type="submit" value="Add">
+           {% else %}
+                <h2>User Not Authenticated!</h2>
+           {% endif %}
+
+           </form>
+    </div>
+
+{% endblock content %}
+

@@ -1,0 +1,109 @@
+ {% load static %}
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark nav ">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">Dr. Bot <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}"> <span class="sr-only">(current)</span></a>
+        </li>
+
+        {% if user.is_authenticated %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'charts' %}"><i class="fa fa-line-chart" aria-hidden="true"> Analytics</i></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+        {% endif %}
+
+      </ul>
+      {% if user.is_authenticated %}
+      <ul class="nav navbar-nav ml-auto">
+        <!--<li class="nav-item">-->
+          <!--<form class="form-inline my-2 ">-->
+            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--<button class="btn btn-outline-success my-2 " type="submit">Search</button>-->
+          <!--</form>-->
+        <!--</li>-->
+        <li class="nav-item ml-4 active">
+          <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      {%else%}
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+          <!--<a class="nav-link" id="myBtn"><img style="width:25px; height:25px" src="/static/loginicon.png" /></a>-->
+          <a class="nav-link" id="myBtn"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+          <!--<a class="nav-link"  href="{% url 'user_login' %}">Login</a>-->
+        </li>
+      </ul>
+      {%endif%}
+    </div>
+  </nav>
+  {% if user.is_authenticated %}
+      <div class="sidebar">
+      <a href="{% url 'index' %}"><i class="fa fa-home" aria-hidden="true"> Home</i> </a>
+      <a href="{% url 'manageServer' %}"><i class="fa fa-server" aria-hidden="true"> Server</i></a>
+      <a href="{% url 'manageRobot' %}"><i class="fa fa-android" aria-hidden="true"> Robot</i></a>
+      <a href="{% url 'manageMachine' %}"><i class="fa fa-desktop" aria-hidden="true"> Machine</i></a>
+      <a href="{% url 'manageApp' %}"><i class="fa fa-rocket" aria-hidden="true"> Apps</i></a>
+      <a href="{% url 'charts' %}"><i class="fa fa-line-chart" aria-hidden="true"> Analytics</i></a>
+      </div>
+  {%endif%}
+  <!--{% comment %} change 2 {% endcomment %}-->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="closex" style="float:right">&times;</span>
+      <form action="{%url 'user_login'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" class="form-control" name="username" /></div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" aria-describedby="passwordHelp">
+          <small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone
+            else.</small>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <p>Not registered? <a href="#">Sign Up</a> | <a href="#">Forgot Password?</a></p>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <script type="text/javascript">
+    {% autoescape off %}
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("closex")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    {% endautoescape %}
+  </script>

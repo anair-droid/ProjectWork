@@ -1,0 +1,32 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+{% block body %}
+
+   <div class="form-modal-content" border-radius: 25px;>
+       <form method="GET" action="{% url 'home' %}" class="form-modal-content1"  >
+           {% csrf_token %}
+           {% if user.is_authenticated %}
+                <!--<h2>Welcome {{ user.username }}!</h2>-->
+
+                      <label for="botname">Bot Name</label>
+                      <input type="text" class="form-control" name="last_name" value={{ tblConf.botname|capfirst }}>
+
+
+                      <label for="botdesc">Description</label>
+                      <input type="text" class="form-control" name="username" value={{ tblConf.botdescription|capfirst }}>
+
+
+                      <label for="botapplication">Application</label>
+                      <input type="text" class="form-control" name="username" value={{ tblConf.application|capfirst }}>
+                              <label for="botapplication">Application</label>
+
+                      <input id="submit" class="call-to-action-button_Change" type="submit" value="Home">
+           {% else %}
+                <h2>User Not Authenticated!</h2>
+           {% endif %}
+
+           </form>
+    </div>
+
+{% endblock body %}
+

@@ -1,0 +1,122 @@
+/*
+Theme Name: Ample
+Theme URI: https://themegrill.com/themes/ample/
+Author: ThemeGrill
+Author URI: https://themegrill.com
+Description: Ample is a multipurpose responsive WordPress theme made to help you create a beautiful professional looking site in no time. It has numerous built-in options to give your site the look that you want. Get free support at https://themegrill.com/support-forum/ and check the demo at https://demo.themegrill.com/ample/
+Version: 1.1.7
+License: GNU General Public License, version 3 (GPLv3)
+License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+Tags: one-column, two-columns, right-sidebar, left-sidebar, custom-header, custom-background, custom-menu, custom-colors, threaded-comments, translation-ready, featured-images, theme-options, blog, e-commerce
+Text Domain: ample
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Reset
+2.0 Typography
+		2.1 Headings
+		2.2 Others
+3.0 Elements
+		3.1 Superscript and Subscript
+		3.2 Table
+		3.3 Lists
+		3.4 Blockquote
+		3.5 Others
+4.0 Forms
+5.0 Navigation
+		5.1 Links
+		5.2 Primary Menu
+		5.3 Primary Menu Dropdown
+		5.4 Responsive Menu
+6.0 Images
+7.0 Alignments
+8.0 Clearings
+9.0 Media
+		9.1 Captions
+		9.2 WordPress Gallery Support
+10.0 Extras
+		10.1 Featured Slider
+		10.2 Search Design
+		10.3 Page Header Title
+11.0 Widgets
+		11.1 Widgets General CSS
+		11.2 Services Widget
+		11.3 Call to Action Widget
+		11.4 Featured Posts Widget
+		11.5 Portfolio Widget
+12.0 Plugins Support
+		12.1 Breadcrumb NavXT
+		12.2 WP-PageNavi
+13.0 Content
+		13.1 Body
+		13.2 Header
+		13.3 Primary, Secondary & Tertiary Content Area
+		13.4 Content Columns
+		13.5 Posts and Pages
+		13.6 Pagination
+		13.7 Comments
+		13.8 Footer
+				13.8.a Footer General CSS
+				13.8.b Footer Widget Area
+				13.8.c Footer Copyright Info
+				13.8.d Footer menu
+				13.8.e Scroll to Top
+14.0 Responsive Structure
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 Reset
+--------------------------------------------------------------*/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

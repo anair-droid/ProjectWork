@@ -1,0 +1,106 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+ {% block content %}
+
+   <div class="botdetails">
+       <form method="GET" action="{% url 'manageApp' %}" class="form-modal-content" >
+           {% if user.is_authenticated %}
+                <!--<h2>Welcome {{ user.username }}!</h2>-->
+           <a class="nav-link" id="myBtnApp"><i class="fa fa-plus-circle fa-2x"></i></a>
+                   <table style="width:70%">
+                    <tr>
+                    <td>App Name</td>
+                    <td>Description</td>
+                    <td>LOB</td>
+                    </tr>
+                     {% for tbldata in monitorApp %}
+                          <tr>
+                            <td>{{ tbldata.appname|capfirst }}</td>
+                            <td>{{ tbldata.appdesc|capfirst }}</td>
+                            <td>{{ tbldata.applob|capfirst }}</td>
+                            <td><a href="#EditServer"><i class="fa fa-edit fa"></i></a></td>
+                          </tr>
+                    {% endfor %}
+                    </table>
+           {% else %}
+                <h2>Welcome to Dr Bot!</h2>
+           {% endif %}
+
+           </form>
+                            <div id="myModalApp" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content1">
+                      <span class="closex1" style="float:right">X</span>
+                      <form method="POST" action="{% url 'manageApp' %}"   >
+                        {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-8">
+                                  <label for="appurl">Name</label>
+                                  <input type="text" class="form-control" name="appurl"  required>
+                                </div>
+                            </div>
+                             <div class="form-row">
+                                <div class="col-8">
+                                  <label for="botdesc">URL</label>
+                                  <input type="text" class="form-control" name="botdesc"  required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-8">
+                                  <label for="botdesc">Description</label>
+                                  <input type="text" class="form-control" name="botdesc"  required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-8">
+                                  <label for="botServerID">LOB</label>
+                                  <input type="text" class="form-control" name="botServerID"  required>
+                                </div>
+
+                             </div>
+                            <div class="form-row">
+                                <div class="col-11">
+                                    <!--<button class="w3-button w3-medium w3-round-large w3-indigo" type="add">Add</button>-->
+                                    <input id="submit" class="w3-button w3-medium w3-round-large w3-indigo" type="submit" value="Add">
+                                </div>
+                             </div>
+
+
+
+                      </form>
+                    </div>
+
+                  </div>
+            <script type="text/javascript">
+    {% autoescape off %}
+    // Get the modal
+    var modal = document.getElementById("myModalApp");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtnApp");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("closex1")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    {% endautoescape %}
+  </script>
+    </div>
+
+{% endblock content %}

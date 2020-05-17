@@ -1,0 +1,239 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+ {% block content %}
+  <div clas="modal">Analytics</div>
+    <!--<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>-->
+	<!--<script src="https://www.chartjs.org/samples/latest/utils.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js" integrity="sha256-8zyeSXm+yTvzUN1VgAOinFgaVFEFTyYzWShOy9w7WoQ=" crossorigin="anonymous"></script>-->
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>-->
+    <!--<script src="https://chartjs.org/samples/latest/utils.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>-->
+	<style>
+	<!--canvas {-->
+		<!-- -moz-user-select: none;-->
+		<!-- -webkit-user-select: none;-->
+		<!-- -ms-user-select: none;-->
+	<!--}-->
+	</style>
+    <div class="form-modal-content">
+		<table>
+			<tr>
+				<td>
+					<div>
+						<canvas id="myChart"> </canvas>
+					</div>
+				</td>
+				<td>
+					<div>
+						<canvas id="myChart1"></canvas>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div >
+						<canvas id="myChart2"></canvas>
+					</div>
+				</td>
+				<td>
+					<div >
+						<canvas id="myChart3"></canvas>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<!--<div class="ten wide column">-->
+             	<!--<div style="width:50%;">-->
+					<!--<canvas id="myChart"></canvas>-->
+				<!--</div>-->
+				<!--<div style="width:50%;">-->
+					<!--<canvas id="myChart1"></canvas>-->
+				<!--</div>-->
+		<!--</div>-->
+		<!--<div class="ten wide column">-->
+				<!--<div style="width:50%;">-->
+					<!--<canvas id="myChart2"></canvas>-->
+				<!--</div>-->
+				<!--<div style="width:50%;">-->
+					<!--<canvas id="myChart3"></canvas>-->
+				<!--</div>-->
+		<!--</div>-->
+	</div>
+    <!--<div id="the whole thing" style="height:100%; width:100%" >-->
+
+	<!--<div style="width:50%;">-->
+		<!--<canvas id="myChart"></canvas>-->
+	<!--</div>-->
+	<!--<div style="width:50%;">-->
+		<!--<canvas id="myChart1"></canvas>-->
+	<!--</div>-->
+	<!--<div style="width:25%;">-->
+		<!--<canvas id="myChart2"></canvas>-->
+	<!--</div>-->
+	<!--<div style="width:25%;">-->
+		<!--<canvas id="myChart3"></canvas>-->
+	<!--</div>-->
+
+    </div>
+	<!--<button id="randomizeData">Randomize Data</button>-->
+	<script >
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for item in chartMachData %}'{{item.machinename}}',{% endfor %}],
+                datasets: [{
+                    label: '# of Robots running',
+                    data: [{% for item in chartMachData %}{{item.NumberofBots}},{% endfor %}],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+	</script>
+    <script >
+
+        var ctx = document.getElementById('myChart1').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Bot1', 'Bot2', 'Bot3', 'Bot4', 'Bot5', 'Bot6'],
+                datasets: [{
+                    label: '# of Runs',
+                    data: [10, 7, 3, 5, 10, 11],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+	</script>
+	<script >
+
+        var ctx = document.getElementById('myChart2');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+
+                labels: [{% for item in chartMachData %}'{{item.machinename}}',{% endfor %}],
+                datasets: [{
+                    label: '# of Robots running',
+                    data: [{% for item in chartMachData %}{{item.NumberofBots}},{% endfor %}],
+                    backgroundColor:  [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 102, 0.2)',
+                        'rgba(255, 159, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 64, 159, 1)',
+                        'rgba(255, 159, 102, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+	</script>
+	<script >
+
+        var ctx = document.getElementById('myChart3');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Bot1', 'Bot2', 'Bot3', 'Bot4', 'Bot5', 'Bot6'],
+                datasets: [{
+                    label: '# of Runs',
+                    data: [10, 7, 3, 5, 10, 11],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+	</script>
+ {% endblock content %}

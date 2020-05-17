@@ -1,0 +1,14 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+ {% block body %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Dr Bot</h1>
+    {% if user.is_authenticated %}
+        <h2>Welcome {{ user.username }}!</h2>
+    {% else %}
+        <h2>Welcome to Dr Bot!</h2>
+    {% endif %}
+  </div>
+</div>
+{% endblock body %}

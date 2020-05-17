@@ -1,0 +1,237 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+{% block scripts %}
+
+{% endblock scripts %}
+{% block content %}
+    <!--Dr Bot</h1>-->
+    {% if user.is_authenticated %}
+        <!--<h2>Welcome {{ user.first_name }}!</h2>-->
+
+<H1>Dash Board</H1>
+          <div class="form-modal-content">
+
+            <table>
+                 <tr>
+                    <td class="tbldiv">
+                        <canvas id="myChart"></canvas>
+                    </td>
+                    <td class="tbldiv">
+                        <canvas id="myChart1"></canvas>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="tbldiv">
+                        <canvas id="myChart2"></canvas>
+                    </td>
+                    <td class="tbldiv">
+                        <canvas id="myChart3"></canvas>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="tbldiv">
+                        <a href="#Server"><i class="fa fa-server fa-2x" aria-hidden="true"> Server</i></a>
+                        <li style="color:red">AA- srvban09rpavm01: ONLine</li>
+                        <li>AA- srvban09rpavm02: OFFline</li>
+                        <li></li>
+                        <li></li>
+                    </td>
+                    <td class="tbldiv">
+                        <a href="#Robot"><i class="fa fa-android fa-2x" aria-hidden="true"> Robot</i></a>
+                        <li style="color:red">AA-Robot1: ONLine</li>
+                        <li>AA-Robot2: OFFline</li>
+                        <li>AA-Robot3: OFFline</li>
+                        <li>AA-Robot4: OFFline</li>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="tbldiv">
+                        <a href="#Machine"><i class="fa fa-desktop fa-2x" aria-hidden="true" > Machine</i></a>
+                        <li style="color:red">AA-Machine1: ONLine</li>
+                        <li>AA-Machine2: OFFline</li>
+                        <li>AA-Machine3: OFFline</li>
+                        <li>AA-Machine4: OFFline</li>
+                    </td>
+                    <td class="tbldiv">
+                        <a href="#Apps"><i class="fa fa-rocket fa-2x" aria-hidden="true"> Apps</i></a>
+                        <li style="color:red">AA-App1: ONLine</li>
+                        <li>AA-App2: OFFline</li>
+                        <li>AA-App3: OFFline</li>
+                        <li>AA-App4: OFFline</li>
+                    </td>
+                </tr>
+            </table>
+           </div>
+
+    {% else %}
+        <!--<h2>Welcome to Dr Bot!</h2>-->
+    {% endif %}
+
+            <script >
+
+                var ctx = document.getElementById('myChart');
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
+                        datasets: [{
+                            label: '# of Runs',
+                            data: [12, 19, 3, 5, 2, 3],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+            </script>
+            <script >
+
+                var ctx = document.getElementById('myChart1');
+                var myChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Bot1', 'Bot2', 'Bot3', 'Bot4', 'Bot5', 'Bot6'],
+                        datasets: [{
+                            label: '# of Runs',
+                            data: [10, 7, 3, 5, 10, 11],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+            </script>
+            <script >
+
+                var ctx = document.getElementById('myChart2');
+                var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
+                        datasets: [{
+                            label: '# of Runs',
+                            data: [12, 19, 3, 5, 2, 3],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+            </script>
+            <script >
+
+                var ctx = document.getElementById('myChart3');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Bot1', 'Bot2', 'Bot3', 'Bot4', 'Bot5', 'Bot6'],
+                        datasets: [{
+                            label: '# of Runs',
+                            data: [10, 7, 3, 5, 10, 11],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+            </script>
+{% endblock content %}

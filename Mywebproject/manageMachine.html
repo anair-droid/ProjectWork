@@ -1,0 +1,30 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+{% block body %}
+
+   <div class="form-modal-content">
+       <form method="POST" action="{% url 'manageMachine' %}"  >
+           {% csrf_token %}
+           {% if user.is_authenticated %}
+                <!--<h2>Welcome {{ user.username }}!</h2>-->
+
+                      <label for="machinename">Machine Name</label>
+                      <input type="text" class="form-control" name="machinename" required="True">
+                      <label for="machineIP">Machine IP</label>
+                      <input type="text" class="form-control" name="machineIP" >
+                      <label for="machinedesc">Machine Desc</label>
+                      <input type="text" class="form-control" name="machinedesc" >
+                      <label for="RPAServerID">RPA ServerID</label>
+                      <input type="text" class="form-control" name="RPAServerID" required="True">
+
+
+                      <input id="submit" class="call-to-action-button_Change" type="submit" value="Add">
+           {% else %}
+                <h2>User Not Authenticated!</h2>
+           {% endif %}
+
+           </form>
+    </div>
+
+{% endblock body %}
+

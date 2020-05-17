@@ -1,0 +1,32 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+{% block body %}
+
+   <div class="form-modal-content">
+       <form method="POST" action="{% url 'addrobot' %}"  >
+           {% csrf_token %}
+           {% if user.is_authenticated %}
+                <!--<h2>Welcome {{ user.username }}!</h2>-->
+
+                      <label for="botname">RPA BotName</label>
+                      <input type="text" class="form-control" name="botname" >
+
+
+                      <label for="botdesc">Bot Description</label>
+                      <input type="text" class="form-control" name="botdesc" >
+
+
+                      <label for="botapplication">RPA Server</label>
+                      <input type="text" class="form-control" name="botServerID" >
+
+
+                      <input id="submit" class="call-to-action-button_Change" type="submit" value="Add">
+           {% else %}
+                <h2>User Not Authenticated!</h2>
+           {% endif %}
+
+           </form>
+    </div>
+
+{% endblock body %}
+

@@ -1,0 +1,128 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+ {% block content %}
+<!--<style>-->
+        <!--.form-row {-->
+               <!--display: grid;-->
+                <!--padding: 10px;-->
+                <!--font-size: 20px;-->
+                  <!--}-->
+          <!--.modal-content {-->
+                   <!--background-color: #BFC5CF;-->
+                   <!--margin: auto;-->
+                   <!--padding: 25px;-->
+                   <!--padding-top: 10px;-->
+                   <!--border: 1px solid #888;-->
+                   <!--width: 60%;-->
+                 <!--}-->
+<!--</style>-->
+   <div class="">
+
+       <form method="GET" action= "{% url 'manageServer' %}" class="form-modal-content" >
+           <div>
+           {% if user.is_authenticated %}
+                <!--<h2>Welcome {{ user.username }}!</h2>-->
+                   <a class="nav-link" id="myBtn1"><i class="fa fa-plus-circle fa-2x"></i></a>
+                   <table style="width:70%">
+                    <tr>
+                    <th>Line of Business</th>
+                    <th>Server</th>
+                    <th>URI</th>
+                    <th></th>
+                    </tr>
+                     <!--{% for tblitem in monitorSvr %}-->
+                          <tr>
+                            <td>ABC Corps</td>
+                            <td>AA-Server</td>
+                            <td>http://srvban09rpavm01.corp.mphasis.com/</td>
+                            <td><a href="#EditServer"><i class="fa fa-edit fa"></i></a></td>
+                          </tr>
+                    <!--{% endfor %}-->
+                    </table>
+           {% else %}
+                <h2>Welcome to Dr Bot!</h2>
+           {% endif %}
+           </div>
+           <div class="botdetails">
+
+           </div>
+       </form>
+              <div id="myModal1" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content1">
+                      <span class="closex1" style="float:right">X</span>
+                      <form method="POST" action="{% url 'manageServer' %}"   >
+                        {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-6">
+                                  <label for="applob">LOB</label>
+                                  <input type="text" class="form-control" name="applob"  required>
+                                </div>
+                            </div>
+                          <div class="form-row">
+                                <div class="col-6">
+                                  <label for="appname">Name</label>
+                                  <input type="text" class="form-control" name="appname"  required>
+                                </div>
+                             </div>
+                            <div class="form-row">
+                                <div class="col-11">
+                                  <label for="appname">URI</label>
+                                  <input type="text" class="form-control" name="appUrl"  required>
+                                </div>
+                                <div class="col-11">
+                                  <label for="appname">API Key</label>
+                                  <input type="text" class="form-control" name="appAPIkey"  required>
+                                  </div>
+                                 <div class="col-17">
+                                  <label for="appname">Param</label>
+                                  <input type="text" class="form-control" name="appAPIkey"  required>
+                                  </div>
+                             </div>
+                            <div class="form-row">
+                                <div class="col-7">
+                                    <button class="w3-button w3-medium w3-round-large w3-indigo" type="add">Add</button>
+
+                                </div>
+                             </div>
+
+
+
+                      </form>
+                    </div>
+
+                  </div>
+            <script type="text/javascript">
+    {% autoescape off %}
+    // Get the modal
+    var modal = document.getElementById("myModal1");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn1");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("closex1")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    {% endautoescape %}
+  </script>
+
+    </div>
+
+{% endblock content %}

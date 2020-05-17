@@ -1,0 +1,16 @@
+{% extends "drbotapp/base.html" %}
+{% load static %}
+ {% block body %}
+ <div class="logincontainer" >
+<form method="POST" action="{% url 'user_login' %}" >
+{% csrf_token %}
+     <!--{{ drbotlogin }}-->
+          <label for="username">User name:</label>
+          <input type="text" name="username" >
+
+          <label for="password">Password</label>
+          <input type="password" name="password">
+    <input id="submit" class="call-to-action-button_Change" type="submit" value="Submit">
+</form>
+ </div>
+{% endblock body %}
